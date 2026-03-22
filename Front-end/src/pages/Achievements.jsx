@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { achievementsAPI } from '../services/api';
+import { getAssetUrl } from '../services/urls';
 import { useAuth } from '../context/AuthContext';
 import SecurityModal from '../components/SecurityModal';
 import '../pages/Projects.css';
@@ -328,7 +329,7 @@ const Achievements = () => {
                             {selectedAchievement.image && (
                                 <div className="project-modal-image">
                                     <img
-                                        src={`http://localhost:5000${selectedAchievement.image}`}
+                                        src={getAssetUrl(selectedAchievement.image)}
                                         alt={selectedAchievement.title}
                                     />
                                 </div>

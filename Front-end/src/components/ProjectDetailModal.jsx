@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getAssetUrl } from '../services/urls';
 import './ProjectDetailModal.css';
 
 const ProjectDetailModal = ({ project, isOpen, onClose }) => {
@@ -38,7 +39,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
                     
                     {project.image && (
                         <div className="project-modal-image">
-                            <img src={`http://localhost:5000${project.image}`} alt={project.title} />
+                            <img src={getAssetUrl(project.image)} alt={project.title} />
                         </div>
                     )}
                     

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { resumeAPI } from '../services/api';
+import { getAssetUrl } from '../services/urls';
 import { useAuth } from '../context/AuthContext';
 import SecurityModal from '../components/SecurityModal';
 import '../pages/Projects.css';
@@ -110,7 +111,7 @@ const Resume = () => {
 
     const generalCvPath = resume?.generalCvFile || resume?.cvFile || resume?.cvImage;
     const generalCvType = (resume?.generalCvFileType || resume?.cvFileType || '').toLowerCase();
-    const generalCvUrl = generalCvPath ? `http://localhost:5000${generalCvPath}` : null;
+    const generalCvUrl = generalCvPath ? getAssetUrl(generalCvPath) : null;
     const isGeneralPdf = generalCvType.includes('pdf') || (generalCvPath || '').toLowerCase().endsWith('.pdf');
     const cvTypeLabel = isGeneralPdf ? 'PDF' : ((generalCvPath || '').toLowerCase().endsWith('.docx') ? 'DOCX' : 'DOC');
 

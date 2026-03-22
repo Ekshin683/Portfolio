@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { homeAPI } from '../services/api';
+import { getAssetUrl } from '../services/urls';
 import { useAuth } from '../context/AuthContext';
 import SecurityModal from '../components/SecurityModal';
 import './Home.css';
@@ -133,7 +134,7 @@ const Home = () => {
                                     <div className="profile-image-container-new">
                                         {homeData.profileImage ? (
                                             <img 
-                                                src={`http://localhost:5000${homeData.profileImage}`} 
+                                                src={getAssetUrl(homeData.profileImage)} 
                                                 alt="Profile"
                                                 className="profile-main-image"
                                                 onError={(e) => {

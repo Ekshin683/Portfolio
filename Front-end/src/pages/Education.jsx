@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { educationAPI } from '../services/api';
+import { getAssetUrl } from '../services/urls';
 import { useAuth } from '../context/AuthContext';
 import SecurityModal from '../components/SecurityModal';
 import '../pages/Projects.css';
@@ -274,7 +275,7 @@ const Education = () => {
                             >
                                 {edu.logo && (
                                     <img 
-                                        src={`http://localhost:5000${edu.logo}`} 
+                                        src={getAssetUrl(edu.logo)} 
                                         alt={edu.institution}
                                         style={{width: '80px', height: '80px', objectFit: 'contain', marginBottom: '15px'}}
                                     />

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { projectsAPI } from '../services/api';
+import { getAssetUrl } from '../services/urls';
 import { useAuth } from '../context/AuthContext';
 import SecurityModal from '../components/SecurityModal';
 import ProjectDetailModal from '../components/ProjectDetailModal';
@@ -294,7 +295,7 @@ const Projects = () => {
                             >
                                 {project.image && (
                                     <div className="project-image">
-                                        <img src={`http://localhost:5000${project.image}`} alt={project.title} />
+                                        <img src={getAssetUrl(project.image)} alt={project.title} />
                                     </div>
                                 )}
                                 

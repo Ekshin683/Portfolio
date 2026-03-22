@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { skillsAPI } from '../services/api';
+import { getAssetUrl } from '../services/urls';
 import { useAuth } from '../context/AuthContext';
 import SecurityModal from '../components/SecurityModal';
 import '../pages/Projects.css';
@@ -210,7 +211,7 @@ const Skills = () => {
                                     <motion.div key={skill._id} className="card" initial={{opacity: 0, x: -20}} animate={{opacity: 1, x: 0}} transition={{delay: index * 0.05}}>
                                         {skill.icon && (
                                             <img 
-                                                src={`http://localhost:5000${skill.icon}`} 
+                                                src={getAssetUrl(skill.icon)} 
                                                 alt={skill.name}
                                                 style={{width: '48px', height: '48px', objectFit: 'contain', marginBottom: '15px'}}
                                             />
