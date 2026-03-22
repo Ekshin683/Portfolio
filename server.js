@@ -30,7 +30,24 @@ const __dirname = dirname(__filename);
 const app = express();
 
 // Middlewares
-app.use(cors());
+const allowedOrigins = (process.env.CORS_ORIGINS || '')
+    .split(',')
+    .map(origin => origin.trim())
+    .filter(Boolean);
+
+const corsOptions = allowedOrigins.length
+    ? {
+        origin: (origin, callback) => {
+            // Allow server-to-server tools and same-origin calls without Origin header.
+            if (!origin || allowedOrigins.includes(origin)) {
+                return callback(null, true);
+            }
+            return callback(new Error('Not allowed by CORS'));
+        }
+    }
+    : {};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

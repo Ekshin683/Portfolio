@@ -167,6 +167,14 @@ cd Front-end
 npm run build
 ```
 
+## Deployment
+
+This project should be deployed as two services (not one field/service):
+- Backend API (Render)
+- Frontend app (Vercel)
+
+See the full step-by-step guide in `DEPLOYMENT.md`.
+
 ## Customization
 
 ### Change Theme Colors
